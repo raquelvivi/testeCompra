@@ -1,17 +1,25 @@
 
-from usuarios import cadastrar_usuario, usuarios_db
+from usuarios import cadastrar_usuario,consultar_usuario, usuarios_db
 from produtos import cadastrar_produto, produtos_db
 from compras import realizar_compra, listar_compras, compras_db
 
 def test_fluxo_integra_compras():
     print("\nIniciando teste de integração do sistema de compras...\n")
 
-    # Limpa os "bancos" em memória
+     # Limpa os "bancos" em memória
+
+    usuarios_db.clear()
 
 
     # 1. Cadastrar usuários e testar
 
-    assert cadastro.cadastrar_usuario(1, "João")
+    assert cadastrar_usuario(1, "vivian")
+    assert cadastrar_usuario(2, "eduarda")
+    assert cadastrar_usuario(3, "pricila")
+
+    user = consultar_usuario(3)
+    assert user == "pricila", f"Esperado 'pricila', obtido {user}"
+    print(f"retorno da consulta = {user}")
 
 
     # 2. Cadastrar produtos e testar
